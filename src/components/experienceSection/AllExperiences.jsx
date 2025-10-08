@@ -37,8 +37,10 @@ const AllExperiences = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-darkBrown/10 to-black/10 opacity-50 rounded-3xl pointer-events-none"></div>
       
       <div className="relative z-10">
-        {/* Vertical timeline line with gradient */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-cyan/30 via-orange/30 to-transparent rounded-full"></div>
+        {/* Vertical timeline line with gradient - hidden on mobile */}
+        <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 
+          bg-gradient-to-b from-cyan/30 via-orange/30 to-transparent rounded-full 
+          hidden md:block"></div>
         
         {experiences.map((experience, index) => {
           const isEvenIndex = index % 2 === 0;
@@ -54,22 +56,22 @@ const AllExperiences = () => {
                 type: "spring",
                 stiffness: 100
               }}
-              className={`relative flex items-start mb-16 ${
-                isEvenIndex ? 'flex-row' : 'flex-row-reverse'
-              }`}
+              className={`relative flex flex-col md:flex-row items-center mb-16 
+                ${isEvenIndex ? 'md:flex-row' : 'md:flex-row-reverse'}`}
             >
-              {/* Timeline Marker */}
+              {/* Timeline Marker - centered on mobile */}
               <div className={`absolute -top-2 left-1/2 transform -translate-x-1/2 
                 bg-darkBrown border-2 border-orange 
                 w-14 h-14 rounded-full z-20 flex items-center justify-center 
-                shadow-lg hover:shadow-orange/30 transition-all duration-300`}>
+                shadow-lg hover:shadow-orange/30 transition-all duration-300
+                md:left-1/2`}>
                 <FaBriefcase className="text-orange text-2xl" />
               </div>
               
-              {/* Experience Card Container */}
-              <div className={`w-[calc(50%-4rem)] ${
-                isEvenIndex ? 'mr-auto pl-16' : 'ml-auto pr-16'
-              }`}>
+              {/* Experience Card Container - full width on mobile */}
+              <div className={`w-full md:w-[calc(50%-4rem)] 
+                ${isEvenIndex ? 'md:mr-auto md:pl-16' : 'md:ml-auto md:pr-16'}
+                mt-8 md:mt-0`}>
                 <SingleExperience experience={experience} />
               </div>
             </motion.div>
