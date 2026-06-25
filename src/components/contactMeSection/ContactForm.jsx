@@ -19,7 +19,7 @@ const ContactForm = () => {
   const sendEmail = (e) => {
     e.preventDefault();
     emailjs
-      .sendForm("service_zncdm7s", "template_7httpmi", form.current, {
+      .sendForm("service_exn9q9n", "template_7httpmi", form.current, {
         publicKey: "wisv3yTSO6CSVsIzz",
       })
       .then(
